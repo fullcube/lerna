@@ -118,7 +118,7 @@ Independent mode allows you to more specifically update versions for each packag
 
 ## Troubleshooting
 
-If you encounter any issues while using Lerna please check out our [Troubleshooting](doc/troubleshooting.md) 
+If you encounter any issues while using Lerna please check out our [Troubleshooting](doc/troubleshooting.md)
 document where you might find the answer to your problem.
 
 ## Frequently asked questions
@@ -750,9 +750,9 @@ Any logs of a higher level than the setting are shown.  The default is "info".
 
 #### --max-buffer [in-bytes]
 
-Set a max buffer length for each underlying process call. Useful for example 
-when someone wants to import a repo with a larger amount of commits while 
-running `lerna import`. In that case the built-in buffer length might not 
+Set a max buffer length for each underlying process call. Useful for example
+when someone wants to import a repo with a larger amount of commits while
+running `lerna import`. In that case the built-in buffer length might not
 be sufficient.
 
 #### --no-sort
@@ -789,6 +789,14 @@ can be used to opt out of hoisting for certain dependencies.
 ```sh
 $ lerna bootstrap --hoist --nohoist=babel-*
 ```
+
+#### --noexternals
+
+```sh
+$ lerna bootstrap --noexternals
+```
+
+Skip installing external packages from npm during bootstrapping.
 
 #### --npm-client [client]
 
@@ -835,11 +843,11 @@ private registries.
 
 #### --temp-tag
 
-When passed, this flag will alter the default publish process by first publishing 
-all changed packages to a temporary dist-tag (`lerna-temp`) and then moving the 
+When passed, this flag will alter the default publish process by first publishing
+all changed packages to a temporary dist-tag (`lerna-temp`) and then moving the
 new version(s) to the default [dist-tag](https://docs.npmjs.com/cli/dist-tag) (`latest`).
 
-This is not generally necessary, as Lerna will publish packages in topological 
+This is not generally necessary, as Lerna will publish packages in topological
 order (all dependencies before dependents) by default.
 
 ### Wizard

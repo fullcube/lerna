@@ -37,7 +37,12 @@ export const builder = {
     describe: "Executable used to install dependencies (npm, yarn, pnpm, ...)",
     type: "string",
     requiresArg: true,
-  }
+  },
+  "noexternals": {
+    group: "Command Options:",
+    describe: "Skip installing external dependencies",
+    type: "string"
+  },
 };
 
 export default class BootstrapCommand extends Command {
@@ -89,7 +94,7 @@ export default class BootstrapCommand extends Command {
       // preinstall bootstrapped packages
       (cb) => this.preinstallPackages(cb),
       // install external dependencies
-      (cb) => this.installExternalDependencies(cb),
+      (this.options.noexternals ? (cb) => cb() : (cb) => this.installExternalDependencies(cb)),
       // symlink packages and their binaries
       (cb) => this.symlinkPackages(cb),
       // postinstall bootstrapped packages
